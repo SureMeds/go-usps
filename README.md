@@ -133,7 +133,7 @@ output := uspsClient.PickupAvailability(pickup)
 var uspsClient usps.Client
 uspsClient.Username = ""
 
-var pickup uspsClient.PickupChangeRequest
+var pickup usps.PickupChangeRequest
 pickup.FirstName = "John"
 pickup.LastName = "Doe"
 pickup.FirmName = ""
@@ -162,7 +162,7 @@ output := uspsClient.PickupChange(pickup)
 var uspsClient usps.Client
 uspsClient.Username = ""
 
-var pickup uspsClient.PickUpInquiryRequest
+var pickup usps.PickUpInquiryRequest
 pickup.FirmName = ""
 pickup.SuiteOrApt = ""
 pickup.Address2 = "1390 Market Street"
