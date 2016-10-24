@@ -36,15 +36,15 @@ The access level for this API doesn't require a password, but only requires a us
 Save time and money by reducing shipping errors due to improper address entry. This tool corrects errors in street addresses, including abbreviations and missing information. It also supplies a ZIP+4® Code.
 
 ```go
-var uspsClient usps.Client
-uspsClient.Username = ""
+var client usps.Client
+client.Username = ""
 
 var address usps.Address
 address.Address2 = "6406 Ivy Lane"
 address.City = "Greenbelt"
 address.State = "MD"
 
-output := uspsClient.AddressVerification(address)
+output := client.AddressVerification(address)
 ```
 
 #### Zip Code Lookup
@@ -52,15 +52,15 @@ output := uspsClient.AddressVerification(address)
 Never get another ZIP Code wrong again with the ZIP Code Lookup tool. Find matching ZIP Codes or ZIP+4 Codes for any given address, city, and state in the U.S.
 
 ```go
-var uspsClient usps.Client
-uspsClient.Username = ""
+var client usps.Client
+client.Username = ""
 
 var address usps.Address
 address.Address2 = "6406 Ivy Lane"
 address.City = "Greenbelt"
 address.State = "MD"
 
-output := uspsClient.ZipCodeLookup(address)
+output := client.ZipCodeLookup(address)
 ```
 
 #### City/State Lookup
@@ -68,13 +68,13 @@ output := uspsClient.ZipCodeLookup(address)
 Don’t waste time searching for a city or state; use a ZIP Code to get accurate city and state information automatically.
 
 ```go
-var uspsClient usps.Client
-uspsClient.Username = ""
+var client usps.Client
+client.Username = ""
 
 var address usps.ZipCode
 address.Zip5 = "90210"
 
-output := uspsClient.CityStateLookup(address)
+output := client.CityStateLookup(address)
 ```
 
 #### Hold For Pickup Facility Information
@@ -92,10 +92,10 @@ The access level for this API doesn't require a password, but only requires a us
 Track any package shipped via Priority Mail Express™, Global Express Guaranteed®, or Priority Mail Express International™ services. Check the tracking information for packages shipped with USPS Tracking™, Signature Confirmation™, Certified Mail®, or Registered Mail™ services.
 
 ```go
-var cuspsClient usps.Client
-uspsClient.Username = ""
+var client usps.Client
+client.Username = ""
 
-output := uspsClient.TrackPackage("")
+output := client.TrackPackage("")
 ```
 
 ### Package Pickup
@@ -111,8 +111,8 @@ Check the availability for Package Pickup at a specific address, Schedule a Pick
 ##### Package Pickup Availability
 
 ```go
-var uspsClient usps.Client
-uspsClient.Username = ""
+var client usps.Client
+client.Username = ""
 
 var pickup usps.PickUpRequest
 pickup.FirmName = "ABC Corp."
@@ -124,14 +124,14 @@ pickup.State = "TX"
 pickup.ZIP5 = "77058"
 pickup.ZIP4 = "1234"
 
-output := uspsClient.PickupAvailability(pickup)
+output := client.PickupAvailability(pickup)
 ```
 
 ##### Package Pickup Change
 
 ```go
-var uspsClient usps.Client
-uspsClient.Username = ""
+var client usps.Client
+client.Username = ""
 
 var pickup usps.PickupChangeRequest
 pickup.FirstName = "John"
@@ -153,14 +153,14 @@ pickup.PackageLocation = "Front Door"
 pickup.SpecialInstructions = ""
 pickup.ConfirmationNumber = "WTC123456789"
 
-output := uspsClient.PickupChange(pickup)
+output := client.PickupChange(pickup)
 ```
 
 ##### Package Pickup Inquiry
 
 ```go
-var uspsClient usps.Client
-uspsClient.Username = ""
+var client usps.Client
+client.Username = ""
 
 var pickup usps.PickUpInquiryRequest
 pickup.FirmName = ""
@@ -173,7 +173,7 @@ pickup.ZIP5 = "77058"
 pickup.ZIP4 = ""
 pickup.ConfirmationNumber = "WTC123456789"
 
-output := uspsClient.PickupInquiry(pickup)
+output := client.PickupInquiry(pickup)
 ```
 
 ## Coming soon
