@@ -6,7 +6,7 @@ struct and package to less confusing names
 Download it using
 
 ```shell
-go get github.com/SureMeds/utils-go/usps
+go get github.com/SureMeds/go-usps
 ```
 
 Import it into your project
