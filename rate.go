@@ -7,8 +7,9 @@ import (
 	"strings"
 )
 
+// RateRequest ...
 type RateRequest struct {
-	XMLName        xml.Name `xml:Package"`
+	XMLName        xml.Name `xml:"Package"`
 	Revision       string   `xml:"Revision"`
 	Service        string   `xml:"Service"`
 	ZipOrigination string   `xml:"ZipOrigination"`
@@ -23,9 +24,11 @@ type RateRequest struct {
 	Girth          string   `xml:"Girth"`
 }
 
+// RateV4Response ...
 type RateV4Response struct {
 }
 
+// RateDomestic ...
 func (U *Client) RateDomestic(rate RateRequest) RateV4Response {
 	result := RateV4Response{}
 	if U.Username == "" {

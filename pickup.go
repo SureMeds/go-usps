@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// PickUpRequest ...
 type PickUpRequest struct {
 	FirmName     string `xml:"FirmName"`
 	SuiteOrApt   string `xml:"SuiteOrApt"`
@@ -18,11 +19,13 @@ type PickUpRequest struct {
 	ZIP4         string `xml:"ZIP4"`
 }
 
+// Package ...
 type Package struct {
 	ServiceType string `xml:"ServiceType"`
 	Count       string `xml:"Count"`
 }
 
+// PickupChangeRequest ...
 type PickupChangeRequest struct {
 	FirstName           string `xml:"FirstName"`
 	LastName            string `xml:"LastName"`
@@ -43,6 +46,7 @@ type PickupChangeRequest struct {
 	ConfirmationNumber  string `xml:"ConfirmationNumber"`
 }
 
+// PickUpInquiryRequest ...
 type PickUpInquiryRequest struct {
 	FirmName           string `xml:"FirmName"`
 	SuiteOrApt         string `xml:"SuiteOrApt"`
@@ -55,6 +59,7 @@ type PickUpInquiryRequest struct {
 	ConfirmationNumber string `xml:"ConfirmationNumber"`
 }
 
+// CarrierPickupAvailabilityResponse ...
 type CarrierPickupAvailabilityResponse struct {
 	FirmName     string `xml:"FirmName"`
 	SuiteOrApt   string `xml:"SuiteOrApt"`
@@ -69,6 +74,7 @@ type CarrierPickupAvailabilityResponse struct {
 	Error        string `xml:"Error"`
 }
 
+// CarrierPickupChangeResponse ...
 type CarrierPickupChangeResponse struct {
 	FirstName           string `xml:"FirstName"`
 	LastName            string `xml:"LastName"`
@@ -93,6 +99,7 @@ type CarrierPickupChangeResponse struct {
 	Error               string `xml:"Error"`
 }
 
+// CarrierPickupInquiryResponse ...
 type CarrierPickupInquiryResponse struct {
 	FirstName           string    `xml:"FirstName"`
 	LastName            string    `xml:"LastName"`
@@ -116,12 +123,14 @@ type CarrierPickupInquiryResponse struct {
 	Error               string    `xml:"Error"`
 }
 
+// Error ...
 type Error struct {
 	Number      string `xml:"Number"`
 	Description string `xml:"Description"`
 	Source      string `xml:"Source"`
 }
 
+// PickupAvailability ...
 func (U *Client) PickupAvailability(pickup PickUpRequest) CarrierPickupAvailabilityResponse {
 	result := CarrierPickupAvailabilityResponse{}
 	if U.Username == "" {
@@ -166,6 +175,7 @@ func (U *Client) PickupAvailability(pickup PickUpRequest) CarrierPickupAvailabil
 
 }
 
+// PickupChange ...
 func (U *Client) PickupChange(pickup PickupChangeRequest) CarrierPickupChangeResponse {
 	result := CarrierPickupChangeResponse{}
 	if U.Username == "" {
@@ -209,6 +219,7 @@ func (U *Client) PickupChange(pickup PickupChangeRequest) CarrierPickupChangeRes
 	return result
 }
 
+// PickupInquiry ...
 func (U *Client) PickupInquiry(pickup PickUpInquiryRequest) CarrierPickupInquiryResponse {
 	result := CarrierPickupInquiryResponse{}
 	if U.Username == "" {

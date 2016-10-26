@@ -3,6 +3,7 @@ package usps
 import (
 	"bytes"
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"strings"
 	"time"
@@ -63,15 +64,15 @@ type TrackInfo struct {
 }
 
 // GetEstimatedDeliveryTime ...
-func (tr TrackResponse) GetEstimatedDeliveryTime() time.Time, error {
+func (tr TrackResponse) GetEstimatedDeliveryTime() (time.Time, error) {
 	if tr.TrackInfo.ExpectedDeliveryDate == "" {
 		return time.Time{}, errors.New("Missing expected delivery date")
 	}
 	if tr.TrackInfo.ExpectedDeliveryTime == "" {
-		return time.parse("January 2, 2006", tr.TrackInfo.ExpectedDeliveryDate), nil
+		return time.Parse("January 2, 2006", tr.TrackInfo.ExpectedDeliveryDate)
 	}
-	return time.parse("January 2, 2006 03:04 PM", fmt.Sprintf("%s %s", tr.TrackInfo.ExpectedDeliveryDate,
-		tr.TrackInfo.ExpectedDeliveryTime)), nil
+	return time.Parse("January 2, 2006 03:04 PM", fmt.Sprintf("%s %s", tr.TrackInfo.ExpectedDeliveryDate,
+		tr.TrackInfo.ExpectedDeliveryTime))
 }
 
 // TrackPackage ...

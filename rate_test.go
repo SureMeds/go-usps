@@ -7,9 +7,9 @@ import (
 )
 
 func TestRateDomestic(*testing.T) {
-	var usps USPS
-	usps.Username = os.Getenv("USPSUsername")
-	usps.Production = true
+	var client Client
+	client.Username = os.Getenv("USPSUsername")
+	client.Production = true
 
 	var rate RateRequest
 	rate.Service = "PRIORITY"
@@ -24,11 +24,11 @@ func TestRateDomestic(*testing.T) {
 	rate.Height = "15"
 	rate.Girth = "55"
 
-	output := usps.RateDomestic(rate)
+	output := client.RateDomestic(rate)
 	fmt.Println(output)
 
-	usps.Production = false
-	//if output.Error != "API Authorization failure. User "+usps.Username+" is not authorized to use API CarrierPickupAvailability." {
+	client.Production = false
+	//if output.Error != "API Authorization failure. User "+client.Username+" is not authorized to use API CarrierPickupAvailability." {
 	//	t.Error("Pickup availability is incorrect.")
 	//}
 }

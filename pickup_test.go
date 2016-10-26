@@ -6,8 +6,8 @@ import (
 )
 
 func TestPickupAvailability(t *testing.T) {
-	var usps USPS
-	usps.Username = os.Getenv("USPSUsername")
+	var client Client
+	client.Username = os.Getenv("USPSUsername")
 
 	var pickup PickUpRequest
 	pickup.FirmName = "ABC Corp."
@@ -19,15 +19,15 @@ func TestPickupAvailability(t *testing.T) {
 	pickup.ZIP5 = "77058"
 	pickup.ZIP4 = "1234"
 
-	output := usps.PickupAvailability(pickup)
-	if output.Error != "API Authorization failure. User "+usps.Username+" is not authorized to use API CarrierPickupAvailability." {
+	output := client.PickupAvailability(pickup)
+	if output.Error != "API Authorization failure. User "+client.Username+" is not authorized to use API CarrierPickupAvailability." {
 		t.Error("Pickup availability is incorrect.")
 	}
 }
 
 func TestPickupChange(t *testing.T) {
-	var usps USPS
-	usps.Username = os.Getenv("USPSUsername")
+	var client Client
+	client.Username = os.Getenv("USPSUsername")
 
 	var pickup PickupChangeRequest
 	pickup.FirstName = "John"
@@ -49,15 +49,15 @@ func TestPickupChange(t *testing.T) {
 	pickup.SpecialInstructions = ""
 	pickup.ConfirmationNumber = "WTC123456789"
 
-	output := usps.PickupChange(pickup)
-	if output.Error != "API Authorization failure. User "+usps.Username+" is not authorized to use API CarrierPickupChange." {
+	output := client.PickupChange(pickup)
+	if output.Error != "API Authorization failure. User "+client.Username+" is not authorized to use API CarrierPickupChange." {
 		t.Error("Pickup change is incorrect.")
 	}
 }
 
 func TestPickupInquiry(t *testing.T) {
-	var usps USPS
-	usps.Username = os.Getenv("USPSUsername")
+	var client Client
+	client.Username = os.Getenv("USPSUsername")
 
 	var pickup PickUpInquiryRequest
 	pickup.FirmName = ""
@@ -70,8 +70,8 @@ func TestPickupInquiry(t *testing.T) {
 	pickup.ZIP4 = ""
 	pickup.ConfirmationNumber = "WTC123456789"
 
-	output := usps.PickupInquiry(pickup)
-	if output.Error != "API Authorization failure. User "+usps.Username+" is not authorized to use API CarrierPickupInquiry." {
+	output := client.PickupInquiry(pickup)
+	if output.Error != "API Authorization failure. User "+client.Username+" is not authorized to use API CarrierPickupInquiry." {
 		t.Error("Pickup change is incorrect.")
 	}
 }

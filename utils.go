@@ -8,10 +8,12 @@ import (
 	"net/url"
 )
 
+// URLEncode ...
 func URLEncode(urlToEncode string) string {
 	return url.QueryEscape(urlToEncode)
 }
 
+// GetRequest ...
 func (U *Client) GetRequest(requestURL string) []byte {
 	currentURL := ""
 	if U.Production {
@@ -27,10 +29,15 @@ func (U *Client) GetRequest(requestURL string) []byte {
 		return nil
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	var body []byte
+	body, err = ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println(err)
+	}
 	return body
 }
 
+// GetRequestHTTPS ...
 func (U *Client) GetRequestHTTPS(requestURL string) []byte {
 	currentURL := ""
 	if U.Production {
@@ -54,6 +61,10 @@ func (U *Client) GetRequestHTTPS(requestURL string) []byte {
 		return nil
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	var body []byte
+	body, err = ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 	return body
 }

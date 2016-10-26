@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// Address ...
 type Address struct {
 	Address1 string `xml:"Address1"`
 	Address2 string `xml:"Address2"`
@@ -16,10 +17,12 @@ type Address struct {
 	Zip4     string `xml:"Zip4"`
 }
 
+// ZipCode ...
 type ZipCode struct {
 	Zip5 string `xml:"Zip5"`
 }
 
+// AddressValidateResponse ...
 type AddressValidateResponse struct {
 	Address struct {
 		Address1 string `xml:"Address1"`
@@ -31,6 +34,7 @@ type AddressValidateResponse struct {
 	} `xml:"Address"`
 }
 
+// ZipCodeLookupResponse ...
 type ZipCodeLookupResponse struct {
 	Address struct {
 		Address1 string `xml:"Address1"`
@@ -42,6 +46,7 @@ type ZipCodeLookupResponse struct {
 	} `xml:"Address"`
 }
 
+// CityStateLookupResponse ...
 type CityStateLookupResponse struct {
 	ZipC struct {
 		Zip5  string `xml:"Zip5"`
@@ -50,6 +55,7 @@ type CityStateLookupResponse struct {
 	} `xml:"ZipCode"`
 }
 
+// AddressVerification ...
 func (U *Client) AddressVerification(address Address) AddressValidateResponse {
 	result := AddressValidateResponse{}
 	if U.Username == "" {
@@ -85,6 +91,7 @@ func (U *Client) AddressVerification(address Address) AddressValidateResponse {
 	return result
 }
 
+// ZipCodeLookup ...
 func (U *Client) ZipCodeLookup(address Address) ZipCodeLookupResponse {
 	result := ZipCodeLookupResponse{}
 	if U.Username == "" {
@@ -120,6 +127,7 @@ func (U *Client) ZipCodeLookup(address Address) ZipCodeLookupResponse {
 	return result
 }
 
+// CityStateLookup ...
 func (U *Client) CityStateLookup(zipcode ZipCode) CityStateLookupResponse {
 	result := CityStateLookupResponse{}
 	if U.Username == "" {
